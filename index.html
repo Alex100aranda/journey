@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journey to the West | Tours por México</title>
+  <meta name="description" content="Descubre México con tours culturales y naturales en español, inglés y chino.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Marca -->
+      <a href="#" class="brand" data-i18n="brand">Journey to the West</a>
+
+      <!-- Botón hamburguesa (solo visible en móvil) -->
+      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navegación -->
+      <nav class="nav" id="navMenu">
+        <a href="#about" data-i18n="nav.about">Nosotros</a>
+        <a href="#tours" data-i18n="nav.tours">Tours</a>
+        <a href="#social" data-i18n="nav.contact">Contacto</a>
+        <select id="lang" aria-label="Idioma">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="zh">中文</option>
+        </select>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO CON CARRUSEL -->
+  <section class="hero">
+    <div class="carousel" id="carousel">
+      <div class="slide active" style="background-image:url('img/centro.jpg');"></div>
+      <div class="slide" style="background-image:url('img/cholula.jpg');"></div>
+      <div class="slide" style="background-image:url('img/coyoacan.jpg');"></div>
+      <div class="slide" style="background-image:url('img/taxco.jpg');"></div>
+    </div>
+    <div class="hero-content">
+      <h1 data-i18n="hero.title">Explora México con nosotros</h1>
+      <p data-i18n="hero.subtitle">Descubre historia, cultura y paisajes inolvidables en cada tour.</p>
+      <a href="#tours" class="btn-primary" data-i18n="hero.cta">Ver tours</a>
+    </div>
+  </section>
+
+    <!-- ABOUT -->
+  <section id="about" class="section about-section">
+    <div class="container about-content">
+      <div class="about-text">
+        <h2 data-i18n="about.title">¿Quiénes somos?</h2>
+        <p data-i18n="about.desc">
+          Somos un grupo de guías locales apasionados por compartir la historia, cultura y belleza de México.
+          En Journey to the West creemos que cada recorrido debe ser una experiencia inolvidable,
+          segura y adaptada a cada viajero.
+        </p>
+
+        <ul class="about-list">
+          <li data-i18n="about.item1">✅ Guías certificados y multilingües</li>
+          <li data-i18n="about.item2">🚌 Transporte turístico con seguro</li>
+          <li data-i18n="about.item3">🏛️ Entradas incluidas y horarios flexibles</li>
+        </ul>
+      </div>
+
+      <div class="about-image">
+        <img src="img/guias.jpg" alt="Guías turísticos en México">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TOURS -->
+  <main id="tours" class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="tours.title">Tours destacados</h2>
+      <div id="toursGrid" class="grid"></div>
+    </div>
+  </main>
+
+    <!-- SOCIAL MEDIA -->
+  <section id="social" class="section social-section">
+    <div class="container social-content">
+      <h2 class="section-title" data-i18n="social.title">Síguenos</h2>
+      <p data-i18n="social.subtitle">Conéctate con nosotros y descubre más experiencias increíbles.</p>
+
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Journey to the West</span>
+    </div>
+  </footer>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/5215500000000?text=¡Hola!%20Quisiera%20más%20información%20sobre%20los%20tours%20de%20Journey%20to%20the%20West." 
+     class="whatsapp-float" 
+     target="_blank" 
+     aria-label="Chatear por WhatsApp">
+    <img src="img/whats.svg" alt="WhatsApp" />
+  </a>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
