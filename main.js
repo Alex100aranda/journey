@@ -2,7 +2,7 @@
 const I18N = {
   es: {
     brand: "Journey to the West",
-    nav: { tours: "Tours", about: "Nosotros", contact: "Contacto" },
+    nav: { inicio: "Inicio", about: "Nosotros", tours: "Tours", contact: "Contacto" },
     hero: {
       title: "Explora México con nosotros",
       subtitle: "Descubre historia, cultura y paisajes inolvidables en cada tour.",
@@ -20,12 +20,12 @@ const I18N = {
       title: "Síguenos",
       subtitle: "Conéctate con nosotros y descubre más experiencias increíbles."
     },
-    ui: { readMore: "Ver más" }
+    ui: { readMore: "Ver más", reserve: "Reservar" }
   },
 
   en: {
     brand: "Journey to the West",
-    nav: { tours: "Tours", about: "About", contact: "Contact" },
+    nav: { inicio: "Home", about: "About", tours: "Tours", contact: "Contact" },
     hero: {
       title: "Explore Mexico with us",
       subtitle: "Discover history, culture and breathtaking landscapes in every tour.",
@@ -43,12 +43,12 @@ const I18N = {
       title: "Follow us",
       subtitle: "Connect with us and discover more amazing experiences."
     },
-    ui: { readMore: "Read more" }
+    ui: { readMore: "Read more", reserve: "Book now" }
   },
 
   zh: {
     brand: "西行旅程",
-    nav: { tours: "行程", about: "关于我们", contact: "联系我们" },
+    nav: { inicio: "首页", about: "关于我们", tours: "行程", contact: "联系我们" },
     hero: {
       title: "与我们一起探索墨西哥",
       subtitle: "在每次旅途中体验历史、文化与美景。",
@@ -66,7 +66,7 @@ const I18N = {
       title: "关注我们",
       subtitle: "与我们联系，探索更多精彩旅程。"
     },
-    ui: { readMore: "查看更多" }
+    ui: { readMore: "查看更多", reserve: "立即预订" }
   }
 };
 
@@ -117,11 +117,7 @@ setInterval(nextSlide, 5000);
 const TOURS = [
   {
     img: "img/teotihuacan.jpg",
-    title: {
-      es: "Teotihuacan + Basílica",
-      en: "Teotihuacan + Basilica",
-      zh: "特奥蒂瓦坎 + 瓜达卢佩圣殿"
-    },
+    title: { es: "Teotihuacan + Basílica", en: "Teotihuacan + Basilica", zh: "特奥蒂瓦坎 + 瓜达卢佩圣殿" },
     desc: {
       es: "Pirámides del Sol y la Luna con visita a la Basílica de Guadalupe.",
       en: "Pyramids of the Sun and Moon with visit to Basilica.",
@@ -130,11 +126,7 @@ const TOURS = [
   },
   {
     img: "img/centro.jpg",
-    title: {
-      es: "Museo de Antropología + Centro Histórico",
-      en: "Anthropology Museum + Historic Center",
-      zh: "人类学博物馆 + 历史中心"
-    },
+    title: { es: "Museo de Antropología + Centro Histórico", en: "Anthropology Museum + Historic Center", zh: "人类学博物馆 + 历史中心" },
     desc: {
       es: "Explora las raíces de México y su historia viva.",
       en: "Explore Mexico’s roots and living history.",
@@ -143,11 +135,7 @@ const TOURS = [
   },
   {
     img: "img/coyoacan.jpg",
-    title: {
-      es: "Coyoacán + Xochimilco + CU",
-      en: "Coyoacán + Xochimilco + UNAM",
-      zh: "科约阿坎 + 索奇米尔科 + 大学校园"
-    },
+    title: { es: "Coyoacán + Xochimilco + CU", en: "Coyoacán + Xochimilco + UNAM", zh: "科约阿坎 + 索奇米尔科 + 大学校园" },
     desc: {
       es: "Colores, trajineras y arte en un día inolvidable.",
       en: "Colors, boats and art in an unforgettable day.",
@@ -156,11 +144,7 @@ const TOURS = [
   },
   {
     img: "img/cholula.jpg",
-    title: {
-      es: "Cholula + Puebla",
-      en: "Cholula + Puebla",
-      zh: "乔卢拉 + 普埃布拉"
-    },
+    title: { es: "Cholula + Puebla", en: "Cholula + Puebla", zh: "乔卢拉 + 普埃布拉" },
     desc: {
       es: "La Gran Pirámide y la ciudad de los ángeles.",
       en: "The Great Pyramid and the City of Angels.",
@@ -169,11 +153,7 @@ const TOURS = [
   },
   {
     img: "img/taxco.jpg",
-    title: {
-      es: "Taxco + Cuernavaca",
-      en: "Taxco + Cuernavaca",
-      zh: "塔斯科 + 库埃纳瓦卡"
-    },
+    title: { es: "Taxco + Cuernavaca", en: "Taxco + Cuernavaca", zh: "塔斯科 + 库埃纳瓦卡" },
     desc: {
       es: "Plata, montañas y clima primaveral todo el año.",
       en: "Silver, mountains, and eternal spring weather.",
@@ -187,14 +167,30 @@ function renderTours() {
   const grid = document.getElementById("toursGrid");
   if (!grid) return;
   grid.innerHTML = "";
+
   TOURS.forEach(t => {
+    const title = t.title[__i18n.lang];
+    const desc = t.desc[__i18n.lang];
+    const reserveText = __i18n.t("ui.reserve");
+
+    // mensaje según idioma
+    const messages = {
+      es: `Hola 👋, me interesa el tour: ${title}`,
+      en: `Hi 👋, I'm interested in the tour: ${title}`,
+      zh: `你好 👋，我想了解这个行程: ${title}`
+    };
+
+    const msg = encodeURIComponent(messages[__i18n.lang]);
+    const whatsapp = `https://wa.me/5215512345678?text=${msg}`;
+
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <img src="${t.img}" alt="${t.title[__i18n.lang]}">
+      <img src="${t.img}" alt="${title}">
       <div class="card-content">
-        <h3>${t.title[__i18n.lang]}</h3>
-        <p>${t.desc[__i18n.lang]}</p>
+        <h3>${title}</h3>
+        <p>${desc}</p>
+        <a href="${whatsapp}" target="_blank" class="btn-whatsapp">${reserveText}</a>
       </div>`;
     grid.appendChild(card);
   });
@@ -204,7 +200,6 @@ function renderTours() {
 function setupHamburgerMenu() {
   const toggle = document.getElementById("menuToggle");
   const nav = document.getElementById("navMenu");
-
   if (!toggle || !nav) return;
 
   toggle.addEventListener("click", () => {
@@ -212,7 +207,7 @@ function setupHamburgerMenu() {
     nav.classList.toggle("open");
   });
 
-  // Cierra el menú al hacer clic en un enlace (solo móvil)
+  // cerrar menú en móvil al hacer clic
   nav.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       if (nav.classList.contains("open")) {
@@ -229,11 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTours();
   setupHamburgerMenu();
 
-  // año dinámico en el footer
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
-  // cambio de idioma
   const langSelect = document.getElementById("lang");
   if (langSelect) langSelect.addEventListener("change", e => __i18n.set(e.target.value));
 });
